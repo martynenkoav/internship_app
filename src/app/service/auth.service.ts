@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {User} from "../model/user";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Const} from "../const/const";
+import {environment} from "../../environments/environment";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -16,7 +17,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  AUTH_URL: string = Const.LOCALHOST_URL + 'api/auth';
+  AUTH_URL: string = environment.baseUrl + 'api/auth';
 
   login(user: User): Observable<any> {
     return this.http.post(this.AUTH_URL + '/signin', user, httpOptions);

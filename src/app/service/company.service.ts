@@ -5,6 +5,7 @@ import 'rxjs';
 import {Observable} from 'rxjs';
 import {Const} from "../const/const";
 import {FormGroup} from "@angular/forms";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class CompanyService {
   constructor(private http: HttpClient) {
   }
 
-  private COMPANY_URL: string = Const.LOCALHOST_URL + 'api/company';
+  private COMPANY_URL: string = environment.baseUrl + 'api/company';
 
   public getCompanies(): Observable<any> {
     return this.http.get<any>(this.COMPANY_URL);
